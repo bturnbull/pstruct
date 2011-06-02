@@ -60,7 +60,15 @@ class PStruct < OpenStruct
     unless self.respond_to?(name)
       class << self; self; end.class_eval do
         define_method(name) { @table[name] }
-        define_method("#{name}=") { |x| modifiable[name] = x ; commit ; x }
+        define_method("#{name}=") do |x|
+          if respond_to?(:modifiable)
+            modifiable[name] = x     ## 1.9.x
+          else
+            @table[name] = x         ## 1.8.x
+          end
+          commit
+          x
+        end
       end
     end
     name

@@ -21,7 +21,7 @@ spec = Gem::Specification.new do |s|
 
   # Change these as appropriate
   s.name              = "pstruct"
-  s.version           = "0.5.0"
+  s.version           = "0.5.1"
   s.summary           = "OpenStruct with Persistence"
   s.author            = "Brian Turnbull"
   s.email             = "post@brianturnbull.com"
